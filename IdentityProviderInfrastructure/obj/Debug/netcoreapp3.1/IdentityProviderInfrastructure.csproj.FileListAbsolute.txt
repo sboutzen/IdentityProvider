@@ -1,0 +1,15 @@
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\bin\Debug\netcoreapp3.1\IdentityProviderInfrastructure.deps.json
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\bin\Debug\netcoreapp3.1\IdentityProviderInfrastructure.dll
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\obj\Debug\netcoreapp3.1\IdentityProviderInfrastructure.csprojAssemblyReference.cache
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\obj\Debug\netcoreapp3.1\IdentityProviderInfrastructure.AssemblyInfoInputs.cache
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\obj\Debug\netcoreapp3.1\IdentityProviderInfrastructure.AssemblyInfo.cs
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\bin\Debug\netcoreapp3.1\IdentityProviderInfrastructure.pdb
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\bin\Debug\netcoreapp3.1\IdentityProviderCore.dll
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\bin\Debug\netcoreapp3.1\IdentityProviderCore.pdb
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\obj\Debug\netcoreapp3.1\IdentityProviderInfrastructure.csproj.CopyComplete
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\obj\Debug\netcoreapp3.1\IdentityProviderInfrastructure.dll
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\obj\Debug\netcoreapp3.1\IdentityProviderInfrastructure.pdb
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\bin\Debug\netcoreapp3.1\IdentityProviderInfrastructure.runtimeconfig.json
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\bin\Debug\netcoreapp3.1\IdentityProviderInfrastructure.runtimeconfig.dev.json
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\obj\Debug\netcoreapp3.1\IdentityProviderInfrastructure.genruntimeconfig.cache
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderInfrastructure\obj\Debug\netcoreapp3.1\IdentityProviderInfrastructure.csproj.CoreCompileInputs.cache
