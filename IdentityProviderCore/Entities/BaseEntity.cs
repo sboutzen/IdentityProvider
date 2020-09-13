@@ -9,5 +9,8 @@ namespace IdentityProviderCore.Entities
         public Guid EntityId { get; set; }
 
         public Guid UserId { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

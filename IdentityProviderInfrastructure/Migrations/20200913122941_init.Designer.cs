@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityProviderInfrastructure.Migrations
 {
     [DbContext(typeof(IdentityProviderDbContext))]
-    [Migration("20200913112742_init")]
+    [Migration("20200913122941_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,20 +23,34 @@ namespace IdentityProviderInfrastructure.Migrations
 
             modelBuilder.Entity("IdentityProviderCore.Entities.EnterpriseUser", b =>
                 {
-                    b.Property<Guid>("EntityId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
+
+                    b.Property<Guid>("EntityId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("OrganizationName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("EntityId")
+                    b.HasKey("Id")
+                        .IsClustered();
+
+                    b.HasAlternateKey("EntityId")
                         .IsClustered(false);
 
                     b.HasIndex("EntityId", "UserId")
@@ -47,24 +61,30 @@ namespace IdentityProviderInfrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            EntityId = new Guid("86019bf7-27ce-4f9f-9b6c-e2f08608e063"),
                             Id = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntityId = new Guid("aeaf6f23-545c-4362-bfbc-c57eacdf0432"),
                             OrganizationName = "Org1",
-                            UserId = new Guid("4bd23529-22a1-4802-992d-d8b12c3dfc5f")
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = new Guid("dbbb2de7-6cc8-4082-a806-b43fa2c86761")
                         },
                         new
                         {
-                            EntityId = new Guid("d027528c-77d8-4f1b-b3a6-79ee911f9760"),
                             Id = 2,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntityId = new Guid("5e9aaccd-2b9d-4d4c-866d-5e47bf18ac3c"),
                             OrganizationName = "Org2",
-                            UserId = new Guid("5472e4ad-b07c-4bc4-a747-8784fedcf46d")
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = new Guid("49eb5860-a585-48fb-8fab-63e6846e65ee")
                         },
                         new
                         {
-                            EntityId = new Guid("368e9465-da5c-41b0-895b-adcd85a6ffb8"),
                             Id = 3,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntityId = new Guid("76a48b70-ec46-4b77-a348-90a2534a1a54"),
                             OrganizationName = "Org3",
-                            UserId = new Guid("6427fbbb-4464-459d-83f5-9333ae9ae475")
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = new Guid("12080cd2-5fbd-444a-925f-f40d32f42f4c")
                         });
                 });
 #pragma warning restore 612, 618
