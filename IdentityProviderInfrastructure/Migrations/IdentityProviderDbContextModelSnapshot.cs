@@ -29,7 +29,7 @@ namespace IdentityProviderInfrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.Property<Guid>("EntityId")
                         .HasColumnType("uniqueidentifier");
@@ -40,7 +40,7 @@ namespace IdentityProviderInfrastructure.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -61,28 +61,28 @@ namespace IdentityProviderInfrastructure.Migrations
                         {
                             Id = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntityId = new Guid("aeaf6f23-545c-4362-bfbc-c57eacdf0432"),
+                            EntityId = new Guid("2a439e8a-5745-4d53-adde-c1d79be32380"),
                             OrganizationName = "Org1",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = new Guid("dbbb2de7-6cc8-4082-a806-b43fa2c86761")
+                            UserId = new Guid("44466c7e-e22f-46a2-b4b5-57ea8a1b8da9")
                         },
                         new
                         {
                             Id = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntityId = new Guid("5e9aaccd-2b9d-4d4c-866d-5e47bf18ac3c"),
+                            EntityId = new Guid("26912c96-6105-46e1-9ab2-da64c49d308b"),
                             OrganizationName = "Org2",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = new Guid("49eb5860-a585-48fb-8fab-63e6846e65ee")
+                            UserId = new Guid("7a84eb42-4113-4135-80f4-645294180550")
                         },
                         new
                         {
                             Id = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntityId = new Guid("76a48b70-ec46-4b77-a348-90a2534a1a54"),
+                            EntityId = new Guid("bcacae8b-20e1-4425-96fe-1a1397102b0d"),
                             OrganizationName = "Org3",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = new Guid("12080cd2-5fbd-444a-925f-f40d32f42f4c")
+                            UserId = new Guid("77432a6b-6cb8-4a87-a26c-e33fe822b068")
                         });
                 });
 #pragma warning restore 612, 618

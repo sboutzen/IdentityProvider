@@ -15,8 +15,8 @@ namespace IdentityProviderInfrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EntityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getutcdate()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getutcdate()"),
                     OrganizationName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -30,17 +30,17 @@ namespace IdentityProviderInfrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "EnterpriseUsers",
                 columns: new[] { "Id", "EntityId", "OrganizationName", "UserId" },
-                values: new object[] { 1, new Guid("aeaf6f23-545c-4362-bfbc-c57eacdf0432"), "Org1", new Guid("dbbb2de7-6cc8-4082-a806-b43fa2c86761") });
+                values: new object[] { 1, new Guid("2a439e8a-5745-4d53-adde-c1d79be32380"), "Org1", new Guid("44466c7e-e22f-46a2-b4b5-57ea8a1b8da9") });
 
             migrationBuilder.InsertData(
                 table: "EnterpriseUsers",
                 columns: new[] { "Id", "EntityId", "OrganizationName", "UserId" },
-                values: new object[] { 2, new Guid("5e9aaccd-2b9d-4d4c-866d-5e47bf18ac3c"), "Org2", new Guid("49eb5860-a585-48fb-8fab-63e6846e65ee") });
+                values: new object[] { 2, new Guid("26912c96-6105-46e1-9ab2-da64c49d308b"), "Org2", new Guid("7a84eb42-4113-4135-80f4-645294180550") });
 
             migrationBuilder.InsertData(
                 table: "EnterpriseUsers",
                 columns: new[] { "Id", "EntityId", "OrganizationName", "UserId" },
-                values: new object[] { 3, new Guid("76a48b70-ec46-4b77-a348-90a2534a1a54"), "Org3", new Guid("12080cd2-5fbd-444a-925f-f40d32f42f4c") });
+                values: new object[] { 3, new Guid("bcacae8b-20e1-4425-96fe-1a1397102b0d"), "Org3", new Guid("77432a6b-6cb8-4a87-a26c-e33fe822b068") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_EnterpriseUsers_EntityId_UserId",
