@@ -4,6 +4,6 @@ C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderCore\bin\Debug
 C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderCore\obj\Debug\netcoreapp3.1\IdentityProviderCore.csprojAssemblyReference.cache
 C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderCore\obj\Debug\netcoreapp3.1\IdentityProviderCore.AssemblyInfoInputs.cache
 C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderCore\obj\Debug\netcoreapp3.1\IdentityProviderCore.AssemblyInfo.cs
-C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderCore\obj\Debug\netcoreapp3.1\IdentityProviderCore.csproj.CoreCompileInputs.cache
 C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderCore\obj\Debug\netcoreapp3.1\IdentityProviderCore.dll
 C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderCore\obj\Debug\netcoreapp3.1\IdentityProviderCore.pdb
+C:\Users\oeret\Desktop\projekter\IdentityProvider\IdentityProviderCore\obj\Debug\netcoreapp3.1\IdentityProviderCore.csproj.CoreCompileInputs.cache

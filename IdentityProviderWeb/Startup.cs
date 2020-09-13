@@ -17,12 +17,12 @@ namespace IdentityProviderWeb
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,7 +30,7 @@ namespace IdentityProviderWeb
             services.AddControllers();
             services.AddDbContext<IdentityProviderDbContext>(o =>
             {
-                o.UseSqlServer(@"Data Source=127.0.0.1,1433;Initial Catalog=IdentityProviderDb;User ID=sa;Password=root@111;");
+                o.UseSqlServer(Configuration["ConnectionStrings:IdentityProviderDbConnectionString"]);
             });
         }
 
