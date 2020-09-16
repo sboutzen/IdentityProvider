@@ -2,3 +2,4 @@
 *.pdb
 */bin/*
 .vs/
+*/obj/
