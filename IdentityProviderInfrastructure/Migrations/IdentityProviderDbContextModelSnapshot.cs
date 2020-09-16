@@ -19,7 +19,7 @@ namespace IdentityProviderInfrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0-preview.8.20407.4");
 
-            modelBuilder.Entity("IdentityProviderCore.Entities.EnterpriseUser", b =>
+            modelBuilder.Entity("IdentityProviderCore.Entities.AccessToken", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,16 +34,34 @@ namespace IdentityProviderInfrastructure.Migrations
                     b.Property<Guid>("EntityId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("OrganizationName")
+                    b.Property<bool>("Exhausted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LongLived")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nonce")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpireAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TokenExpireAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getutcdate()");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id")
                         .IsClustered();
@@ -51,39 +69,235 @@ namespace IdentityProviderInfrastructure.Migrations
                     b.HasAlternateKey("EntityId")
                         .IsClustered(false);
 
-                    b.HasIndex("EntityId", "UserId")
+                    b.HasIndex("EntityId")
                         .IsClustered(false);
 
-                    b.ToTable("EnterpriseUsers");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AccessToken");
+                });
+
+            modelBuilder.Entity("IdentityProviderCore.Entities.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
+
+                    b.Property<Guid>("EntityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Organization")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
+                        .HasDefaultValueSql("null");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
+
+                    b.HasKey("Id")
+                        .IsClustered();
+
+                    b.HasAlternateKey("EntityId")
+                        .IsClustered(false);
+
+                    b.HasIndex("EntityId")
+                        .IsClustered(false);
+
+                    b.ToTable("Clients");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntityId = new Guid("2a439e8a-5745-4d53-adde-c1d79be32380"),
-                            OrganizationName = "Org1",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = new Guid("44466c7e-e22f-46a2-b4b5-57ea8a1b8da9")
+                            EntityId = new Guid("9e7f2d2e-3d46-4eb7-8d05-91a5e1f0ce34"),
+                            Organization = 0,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntityId = new Guid("26912c96-6105-46e1-9ab2-da64c49d308b"),
-                            OrganizationName = "Org2",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = new Guid("7a84eb42-4113-4135-80f4-645294180550")
+                            EntityId = new Guid("9d6a0533-b737-40c9-ba4e-709805b5079c"),
+                            Organization = 1,
+                            PhoneNumber = "some phone number 2",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntityId = new Guid("bcacae8b-20e1-4425-96fe-1a1397102b0d"),
-                            OrganizationName = "Org3",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = new Guid("77432a6b-6cb8-4a87-a26c-e33fe822b068")
+                            EntityId = new Guid("08f99e27-f241-4acc-b4a0-6a31f7b5ce3c"),
+                            Organization = 2,
+                            PhoneNumber = "some phone number 3",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("IdentityProviderCore.Entities.Email", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("EntityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id")
+                        .IsClustered();
+
+                    b.HasAlternateKey("EntityId")
+                        .IsClustered(false);
+
+                    b.HasIndex("EntityId")
+                        .IsClustered(false);
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Email");
+                });
+
+            modelBuilder.Entity("IdentityProviderCore.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
+
+                    b.Property<Guid>("EntityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PasswordHash")
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
+
+                    b.Property<string>("PasswordSalt")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
+
+                    b.HasKey("Id")
+                        .IsClustered();
+
+                    b.HasAlternateKey("EntityId")
+                        .IsClustered(false);
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("EntityId")
+                        .IsClustered(false);
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClientId = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntityId = new Guid("54652c6f-8157-4048-919c-628c8ea99b3b"),
+                            IsAdmin = true,
+                            PasswordHash = "hash1",
+                            PasswordSalt = "salt1",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClientId = 2,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntityId = new Guid("1234bb34-9dda-4e8a-bab6-17db7ef30060"),
+                            IsAdmin = true,
+                            PasswordHash = "hash2",
+                            PasswordSalt = "salt2",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClientId = 3,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntityId = new Guid("7b832965-5494-4a5f-b2df-e8ff10d9358d"),
+                            IsAdmin = false,
+                            PasswordHash = "hash3",
+                            PasswordSalt = "salt3",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("IdentityProviderCore.Entities.AccessToken", b =>
+                {
+                    b.HasOne("IdentityProviderCore.Entities.User", "User")
+                        .WithMany("AccessTokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("IdentityProviderCore.Entities.Email", b =>
+                {
+                    b.HasOne("IdentityProviderCore.Entities.User", "User")
+                        .WithOne("Email")
+                        .HasForeignKey("IdentityProviderCore.Entities.Email", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("IdentityProviderCore.Entities.User", b =>
+                {
+                    b.HasOne("IdentityProviderCore.Entities.Client", "Client")
+                        .WithMany("Users")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

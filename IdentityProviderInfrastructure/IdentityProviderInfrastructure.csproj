@@ -5,29 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200913103452_init.cs" />
-    <Compile Remove="Migrations\20200913103452_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913103542_init.cs" />
-    <Compile Remove="Migrations\20200913103542_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913103944_init.cs" />
-    <Compile Remove="Migrations\20200913103944_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913112254_init.cs" />
-    <Compile Remove="Migrations\20200913112254_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913120844_init.cs" />
-    <Compile Remove="Migrations\20200913120844_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913120910_init.cs" />
-    <Compile Remove="Migrations\20200913120910_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913120929_init.cs" />
-    <Compile Remove="Migrations\20200913120929_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913121831_init.cs" />
-    <Compile Remove="Migrations\20200913121831_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913122720_init.cs" />
-    <Compile Remove="Migrations\20200913122720_init.Designer.cs" />
-    <Compile Remove="Migrations\20200913122941_init.cs" />
-    <Compile Remove="Migrations\20200913122941_init.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.8.20407.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="5.0.0-preview.8.20407.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="5.0.0-preview.8.20407.4" />
@@ -42,10 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IdentityProviderCore\IdentityProviderCore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
